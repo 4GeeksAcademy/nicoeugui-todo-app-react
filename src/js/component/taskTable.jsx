@@ -23,7 +23,7 @@ const TaskTable = () => {
     return (
         <>
             <input type="text" className='form-control' maxLength={55} placeholder="Task Name" aria-label="Task Name" value={taskName} name="taskName" onChange={(e) => setTaskName(e.target.value)}
-                onKeyPress={(e) => {
+                onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         // al hacer Enter se agrega el task con la funcion addTask()
                         addTask();
@@ -40,11 +40,12 @@ const TaskTable = () => {
                         <tr key={task.id}>
                             <td className='text-dark'>{task.name}</td>
                             <td>
-                                <button type="button" class="btn btn-primary" onClick={() => deleteTask(task.id)} ><span class="bi bi-trash"></span></button>
+                                <button type="button" class="btn btn-danger" onClick={() => deleteTask(task.id)} ><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
+                <p>{taskList.length} tareas pendientes</p>
             </table>
         </>
     );
